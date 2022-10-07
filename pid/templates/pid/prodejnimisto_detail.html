@@ -1,15 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <div>{{ object_list }}</div>
-    <div>{{ view }}</div>
+{% extends "pid/layout.html" %}
 
-{% for item in object_list %}
-<div>{{ item.nazev }}</div>
-{% endfor %}
-</body>
-</html>
+{% block title %}
+{{ object.nazev }}
+{% endblock %}
+
+{% block content %}
+<h1>{{ object.nazev }}</h1>
+{% endblock %}

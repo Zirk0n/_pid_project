@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-    <div>{{ request }}</div>
-    <div>{{ user }}</div>
-    <div>{{ object_list }}</div>
-    <div>{{ view }}</div>
+{% extends "pid/layout.html" %}
+{% block title %}Seznam prodejních míst{% endblock %}
+
+{% block content %}
+
+{% load static %}
+<img src="{% static 'pid/lambo.webp' %}" alt="">
 
 {% for item in object_list %}
-<div>{{ item.nazev }}</div>
+<div>
+    <a href="{% url 'pid:DetailProdejniMisto' slug=item.interni_id %}">{{ item.nazev }} [{{ item.interni_id }}]</a>
+</div>
+
+
 {% endfor %}
-</body>
-</html>
+{% endblock %}
