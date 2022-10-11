@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import ListProdejniMisto, DetailProdejniMisto, error_view, redirect_301, redirect_302
+from .views import ListProdejniMisto, DetailProdejniMisto, error_view, redirect_301, redirect_302, kontaktni_formular
 from django.views.decorators.cache import cache_page
 
 app_name = "pid"
@@ -12,4 +12,5 @@ urlpatterns = [
     path("test-error/", error_view),
     path("redirect-301/", redirect_301),
     path("redirect-302/", redirect_302),
+    path("formular/", kontaktni_formular, name="kontaktni_formular"),
 ]

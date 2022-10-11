@@ -1,0 +1,13 @@
+{% extends "pid/layout.html" %}
+
+{% block title %}Kontaktní formulář{% endblock %}
+
+{% block content %}
+    zde bude formulář
+    <form action="{% url 'pid:kontaktni_formular' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <br>
+        <button type ="submit">Odeslat</button>
+    </form>
+{% endblock %}
