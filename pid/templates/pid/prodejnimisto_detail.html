@@ -5,5 +5,27 @@
 {% endblock %}
 
 {% block content %}
-<h1>{{ object.nazev }}</h1>
+<h1>{{ object.nazev }}/{{ object.interni_id }}</h1>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.2/dist/leaflet.css" integrity="sha256-sA+zWATbFveLLNqWO2gtiw3HL/lh1giY/Inf1BJ0z14=" crossorigin=""/>
+<div id="map" style="height: 500px; background-coloer: #ccc;"></div>
+<script src="https://unpkg.com/leaflet@1.9.2/dist/leaflet.js" integrity="sha256-o9N1jGDZrf5tS+Ft4gbIK7mYMipq9lqpVJ91xHSyKhg=" crossorigin=""></script>
+<script>
+    var map = L.map('map').setView([50, 14.4], 10);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+    }).addTo(map);
+    var marker = L.marker([{{ object.lat }}, {{ object.lon }}]).addTo(map);
+</script>
+
+<p>{{ object.typ }}</p>
+<p>{{ object.adresa }}</p>
+
+{% for item in object.oteviraci_doby.all %}
+    <div>
+        {{ item.get_den_od_display|slice:'0:2' }} - {{ item.get_den_do_display|slice:'0:2' }}
+    </div>
+{% endfor %}
+
 {% endblock %}

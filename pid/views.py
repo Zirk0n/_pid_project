@@ -20,6 +20,9 @@ class ListProdejniMisto(generic.ListView):
     def html(self):
         return '<a href="#">Toto je můj link</a>'
 
+class MapaList(ListProdejniMisto):
+    template_name = 'pid/mapa.html'
+
 class DetailProdejniMisto(generic.DetailView):
     model = ProdejniMisto
     slug_field = 'interni_id'
@@ -50,6 +53,7 @@ def kontaktni_formular(request):
         print(request.FILES)
         form = KontaktForm(request.POST)
         print(form.is_valid())
+
         return redirect("pid:kontaktni_formular")
     else:
         form = KontaktForm()
